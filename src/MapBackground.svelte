@@ -82,8 +82,12 @@
 		</svg>
 		<a href="https://commons.wikimedia.org/wiki/File:Slovensko_okresy.svg">Liqid1010</a>, CC0, via Wikimedia Commons
 </main>
-<style type="text/css">
+<style type="scss">
     .st0{
 		fill:#CACACA;
+		transition: .2s;
+		&:hover{
+			fill: #e6e6e6;
+		}
 	}
 </style>
