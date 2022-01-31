@@ -1,7 +1,7 @@
 <script lang="ts">
     export let name: string;
     export let coords: number[];
-    import {cities, index/*, citiesLen*/} from './stores';
+    import {cities, index/*, citiesLen*/, mistakes} from './stores';
 
     function handleClick(){
         console.log("click");
@@ -11,6 +11,7 @@
             $index += 1;
         } else{
             console.log("you are wrong");
+            $mistakes += 1;
         }
     }
 </script>

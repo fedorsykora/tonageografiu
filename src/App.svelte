@@ -1,8 +1,10 @@
 <script lang="ts">
 	import Map from './Map.svelte';
+	import Hud from './Hud.svelte';
 </script>
 
 <main>
+	<Hud/>
 	<Map/>
 </main>
 
