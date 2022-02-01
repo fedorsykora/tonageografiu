@@ -2,7 +2,8 @@ import {writable, derived, readable, Writable, Readable} from 'svelte/store';
 
 type City = {
     name: string,
-    reveal: Function
+    reveal: Function,
+    reset: Function
 }
 
 export const index: Writable<number> = writable(0);

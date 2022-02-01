@@ -31,8 +31,12 @@
         $index += 1;
         revealed = true;
     }
+    function reset(){
+        misattributions = 0;
+        revealed = false;
+    }
 
-    $cities.push({name, reveal});
+    $cities.push({name, reveal, reset});
 </script>
 
 <circle on:click={handleClick} r="5" cx={coords[0]} cy={coords[1]} class={(function(){
