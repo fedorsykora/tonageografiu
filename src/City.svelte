@@ -3,12 +3,14 @@
     export let name: string;
     export let coords: number[];
     export let revealed: boolean = false;
-
+    
     import { get } from 'svelte/store';
     import {cities, index, currentCity/*, citiesLen*/, mistakes, cm} from './stores';
-
+    //import {tweened} from 'svelte/motion';
+    
     
     let misattributions: number; //misattributions of this point
+    let shaking:boolean;
     function handleClick(){
         console.log("click");
         //console.log($citiesLen)
@@ -19,7 +21,10 @@
             } else{
                 $mistakes += 1;
                 $cm += 1
+                shaking = true;
+                setTimeout(()=>shaking=false, 700);//has to be a multiple of animation duration
                 console.log("you are wrong", $cm);
+                navigator.vibrate(200);
             }
         }
     }
@@ -45,7 +50,7 @@
         else return"worthyofimprovement";
     }
     else return "";
-})()}/>
+})()} class:shaking={shaking}/>
 {#if revealed} <text x={coords[0]} y={coords[1]}>{name}</text> {/if}
 
 <style lang="scss">
@@ -68,5 +73,26 @@
     }
     text{
         user-select: none;
+    }
+    .shaking{
+        animation: shake .5s infinite both steps(100, jump-both); 
+    }
+    @keyframes shake{
+        $deviation: .2%;
+        0%{
+            transform: translateX(0%);
+        }
+        25%{
+            transform: translateX($deviation);
+        }
+        50%{
+            fill: red;
+        }
+        75%{
+            transform: translateX(-$deviation);
+        }
+        100%{
+            transform: translateX(0%);
+        }
     }
 </style>

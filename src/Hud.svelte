@@ -14,8 +14,8 @@
     $: remaining = $cities.length - $index;
 </script>
 
+<p id="city">Mesto: <b>{$currentCity?.name || "owo"}</b></p>
 <div>
-    Mesto: {$currentCity?.name || "owo"} <br>
     Počet chýb: {$mistakes} <br>
     Zostávajúce mestá: {remaining} <br>
     <button on:click={reset}>Reset</button> <br>
@@ -33,5 +33,11 @@
         button{
             margin-top: 5%;
         }
+    }
+    #city{
+        position: absolute;
+        margin: 0 auto;
+        left:0;
+        right:0;
     }
 </style>
