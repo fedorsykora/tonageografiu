@@ -2,6 +2,7 @@
     import MapBackground from './MapBackground.svelte';
     import City from './City.svelte';
     import {cities} from './stores';
+    import {onMount} from 'svelte';
 
     let d:{ [name: string]: number[] } = {
         "Bratislava": [67, 577],
@@ -85,6 +86,7 @@
         //"Košice": [50,50]
     };
     
+    onMount(()=>$cities=$cities);//trigger reactivity
     //$cities = Object.keys(d);
 </script>
 

@@ -33,7 +33,6 @@
     }
 
     $cities.push({name, reveal});
-    $cities = $cities;//trigger reactivity
 </script>
 
 <circle on:click={handleClick} r="5" cx={coords[0]} cy={coords[1]} class={(function(){
