@@ -6,7 +6,7 @@
 
     let d:{ [name: string]: number[] } = {
         "Bratislava": [67, 577],
-        "Peezinok": [109, 525],
+        "Pezinok": [109, 525],
         "Senec": [145, 548],
         "Malacky": [38, 451],
 
@@ -51,7 +51,7 @@
         "Žarnovica": [489, 445],
         "Žiar nad Hronom": [528, 406],
         "Banská Štiavnica": [531, 456],
-        "Kurpina": [578, 504],
+        "Krupina": [578, 504],
         "Veľký Krtíš": [650, 550],
         "Zvolen": [593, 409],
         "Banská Bystrica": [597, 345],
