@@ -1,6 +1,6 @@
 import {writable, derived, readable, Writable, Readable} from 'svelte/store';
 
-type City = {
+export type City = {
     name: string,
     reveal: Function,
     reset: Function
