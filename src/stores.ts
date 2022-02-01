@@ -16,7 +16,7 @@ export const cm: Writable<number> = writable(0); //current misattributions
     currentCity.subscribe(val=>ccVal=val)
     cm.subscribe(cmVal => {
         console.log("updated", cmVal);
-        if(cmVal > 4) ccVal.reveal();
+        if(cmVal > 2) ccVal.reveal();
     });
 }
 /*export const citiesLen = derived(cities, $cities => {
