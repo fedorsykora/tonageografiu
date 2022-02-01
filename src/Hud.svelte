@@ -10,13 +10,18 @@
         $index = 0;
         $cm = 0;
     }
+    let remaining: number;
+    $: remaining = $cities.length - $index;
 </script>
 
 <div>
-    Mesto: {$currentCity?.name} <br>
+    Mesto: {$currentCity?.name || "owo"} <br>
     Počet chýb: {$mistakes} <br>
-    Zostávajúce mestá: {$cities.length - $index} <br>
-    <button on:click={reset}>Reset</button>
+    Zostávajúce mestá: {remaining} <br>
+    <button on:click={reset}>Reset</button> <br>
+    {#if remaining == 0}
+    <b style="color: green">You win</b>
+    {/if}
 </div>
 
 <style lang="scss">
