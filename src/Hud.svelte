@@ -15,7 +15,7 @@
 </script>
 
 <p id="city">Mesto: <b>{$currentCity?.name || "owo"}</b></p>
-<div>
+<div id="scores">
     Počet chýb: {$mistakes} <br>
     Zostávajúce mestá: {remaining} <br>
     <button on:click={reset}>Reset</button> <br>
@@ -24,14 +24,23 @@
     {/if}
 </div>
 
+<div id="instructions">
+    <p>Shift + kurzor nad mestom = meno mesta</p>
+</div>
 <style lang="scss">
     div{
         position: absolute;
         top: 0;
-        left: 0;
         padding: 2%;
-        button{
-            margin-top: 5%;
+        &#scores{
+            left: 0;
+            button{
+                margin-top: 5%;
+            }
+        }
+        &#instructions{
+            right: 0;
+    
         }
     }
     #city{

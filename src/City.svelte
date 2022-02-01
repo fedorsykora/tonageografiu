@@ -5,12 +5,13 @@
     export let revealed: boolean = false;
     
     import { get } from 'svelte/store';
-    import {cities, index, currentCity/*, citiesLen*/, mistakes, cm} from './stores';
+    import {cities, index, currentCity/*, citiesLen*/, mistakes, cm, shifted} from './stores';
     //import {tweened} from 'svelte/motion';
     
     
     let misattributions: number; //misattributions of this point
     let shaking:boolean;
+    let moouseover:boolean;
     function handleClick(){
         console.log("click");
         //console.log($citiesLen)
@@ -43,7 +44,7 @@
     $cities.push({name, reveal, reset});
 </script>
 
-<circle on:click={handleClick} r="5" cx={coords[0]} cy={coords[1]} class={(function(){
+<circle on:click={handleClick} on:mouseover={()=>moouseover = true} on:mouseout={()=>moouseover = false} r="5" cx={coords[0]} cy={coords[1]} class={(function(){
     if(revealed){
         if(misattributions==0) return "holeinone";
         else if(misattributions<=4) return "problematic";
@@ -51,7 +52,7 @@
     }
     else return "";
 })()} class:shaking={shaking}/>
-{#if revealed} <text x={coords[0]} y={coords[1]}>{name}</text> {/if}
+{#if revealed||($shifted && moouseover)} <text x={coords[0]} y={coords[1]}>{name}</text> {/if}
 
 <style lang="scss">
     circle{
@@ -75,6 +76,7 @@
         user-select: none;
         text-shadow: 0px 0px 15px #fff;
         fill:#fff;
+        pointer-events: none;
     }
     .shaking{
         animation: shake .5s infinite both steps(100, jump-both); 

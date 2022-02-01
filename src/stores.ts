@@ -22,3 +22,12 @@ export const cm: Writable<number> = writable(0); //current misattributions
 /*export const citiesLen = derived(cities, $cities => {
     return $cities.length;
 });*/
+
+export const shifted: Writable<boolean> = writable(false);
+document.addEventListener("keydown", (e)=>{
+    console.log("shifted", e.shiftKey, e.key);
+    if(e.key == "Shift") shifted.set(true)});
+document.addEventListener("keyup", (e)=>{
+    console.log("unshifted");
+    if(e.key == "Shift") shifted.set(false)});
+console.log(document);
