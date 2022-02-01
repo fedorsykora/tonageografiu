@@ -90,13 +90,13 @@
 		fill: rgba(255, 0, 212, 0.5);
 	}
 	.Žilinský{
-		fill: rgba(65, 105, 225, 0.5);
+		fill: rgba(112, 148, 255, 0.5);
 	}
 	.Košický{
 		fill: rgba(205, 6, 255, 0.5);
 	}
 	.Banskobystrický{
-		fill: rgba(25, 0, 255, 0.5);
+		fill: rgba(108, 92, 255, 0.5);
 	}
 	.Trenčiansky{
 		fill: rgba(52, 255, 136, 0.5);

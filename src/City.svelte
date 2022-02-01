@@ -73,6 +73,8 @@
     }
     text{
         user-select: none;
+        text-shadow: 0px 0px 15px #fff;
+        fill:#fff;
     }
     .shaking{
         animation: shake .5s infinite both steps(100, jump-both); 
