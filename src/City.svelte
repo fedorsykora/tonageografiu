@@ -15,7 +15,6 @@
         if(!revealed){
             if (name == $currentCity.name){
                 console.log("success!")
-                $index += 1;
                 reveal()
             } else{
                 $mistakes += 1;
