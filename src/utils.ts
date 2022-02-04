@@ -1,4 +1,4 @@
-import { cities, City, mistakes, index, cm } from './stores';
+import { cities, City, mistakes, index, cm, startTime } from './stores';
 export function reset(){
     let cn: City[] = [];
     cities.update(c => {
@@ -9,4 +9,5 @@ export function reset(){
     mistakes.set(0);
     index.set(0);
     cm.set(0);
+    startTime.set(new Date());
 }

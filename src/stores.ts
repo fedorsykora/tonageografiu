@@ -10,6 +10,7 @@ export const index: Writable<number> = writable(0);
 export const cities: Writable<City[]> = writable([]);
 export const currentCity: Readable<City>= derived([cities, index], ([$cities, $index])=>$cities[$index]);
 export const mistakes: Writable<number> = writable(0);
+export const startTime: Writable<Date> = writable(new Date());
 export const cm: Writable<number> = writable(0); //current misattributions
 {
     let ccVal: City;
