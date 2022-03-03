@@ -1,6 +1,6 @@
 {
     "name": "to na geografiu",
-    "display":      "standalone",
+    "display": "standalone",
     "orientation":  "landscape",
     "start_url": "/",
     "background_color": "#fff",
