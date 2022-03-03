@@ -8,7 +8,6 @@
     function createTimer(){
         console.log("create timer");
         timer = setInterval(() => {
-            console.log("timer tick");
             time = new Date(new Date().getTime() - $startTime.getTime()).toTimeString().slice(3,8);
         }, 1000);
     }
