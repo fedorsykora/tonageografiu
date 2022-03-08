@@ -5,6 +5,7 @@
     export let revealed: boolean = false;
     export let tempRevealed:boolean = false;
     
+    import { MAX_TRIES } from './constants';
     import { get } from 'svelte/store';
     import {cities, index, currentCity, mistakes, cm} from './stores';
     
@@ -48,7 +49,7 @@
 <circle id="front" r="5" cx={coords[0]} cy={coords[1]} class={(function(){
     if(revealed){
         if(misattributions==0) return "holeinone";
-        else if(misattributions<=4) return "problematic";
+        else if(misattributions<=MAX_TRIES) return "problematic";
         else return"worthyofimprovement";
     }
     else return "";

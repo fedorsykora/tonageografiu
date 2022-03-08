@@ -1,4 +1,5 @@
 import {writable, derived, readable, Writable, Readable} from 'svelte/store';
+import { MAX_TRIES } from './constants';
 
 export type City = {
     name: string,
@@ -17,7 +18,7 @@ export const cm: Writable<number> = writable(0); //current misattributions
     currentCity.subscribe(val=>ccVal=val)
     cm.subscribe(cmVal => {
         console.log("updated", cmVal);
-        if(cmVal > 2) ccVal.reveal();
+        if(cmVal > MAX_TRIES) ccVal.reveal();
     });
 }
 /*export const citiesLen = derived(cities, $cities => {
