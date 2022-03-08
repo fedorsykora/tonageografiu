@@ -35,9 +35,6 @@
     {/if}
 </div>
 
-<div id="instructions">
-    <p>Shift + kurzor nad mestom = meno mesta</p>
-</div>
 <style lang="scss">
     div{
         position: absolute;
@@ -48,10 +45,6 @@
             button{
                 margin-top: 5%;
             }
-        }
-        &#instructions{
-            right: 0;
-    
         }
     }
     #city{

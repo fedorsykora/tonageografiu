@@ -3,18 +3,14 @@
     export let name: string;
     export let coords: number[];
     export let revealed: boolean = false;
+    export let tempRevealed:boolean = false;
     
     import { get } from 'svelte/store';
-    import {cities, index, currentCity/*, citiesLen*/, mistakes, cm, shifted} from './stores';
-    //import {tweened} from 'svelte/motion';
-    
+    import {cities, index, currentCity, mistakes, cm} from './stores';
     
     let misattributions: number; //misattributions of this point
     let shaking:boolean;
-    let moouseover:boolean;
     function handleClick(){
-        console.log("click");
-        //console.log($citiesLen)
         if(!revealed){
             if (name == $currentCity.name){
                 console.log("success!")
@@ -22,9 +18,14 @@
             } else{
                 $mistakes += 1;
                 $cm += 1
+                //shake
                 shaking = true;
                 setTimeout(()=>shaking=false, 700);//has to be a multiple of animation duration
-                console.log("you are wrong", $cm);
+                //reveal temporarily
+                tempRevealed = true;
+                setTimeout(()=>tempRevealed=false,1000);
+
+                console.log(`you were wrong ${$cm} times`);
                 navigator.vibrate(200);
             }
         }
@@ -44,7 +45,7 @@
     $cities.push({name, reveal, reset});
 </script>
 
-<circle on:click={handleClick} on:mouseover={()=>moouseover = true} on:mouseout={()=>moouseover = false} r="5" cx={coords[0]} cy={coords[1]} class={(function(){
+<circle id="front" r="5" cx={coords[0]} cy={coords[1]} class={(function(){
     if(revealed){
         if(misattributions==0) return "holeinone";
         else if(misattributions<=4) return "problematic";
@@ -52,25 +53,37 @@
     }
     else return "";
 })()} class:shaking={shaking}/>
-{#if revealed||($shifted && moouseover)} <text x={coords[0]} y={coords[1]}>{name}</text> {/if}
+{#if revealed||tempRevealed} <text x={coords[0]} y={coords[1]}>{name}</text> {/if}
+<circle id="back" r="20" cx={coords[0]} cy={coords[1]} on:click={handleClick} fill="transparent" stroke="transparent"/>
 
 <style lang="scss">
     circle{
-        fill: rgb(255, 255, 255);
-        stroke: black;
-        transition: .2s;
-        &:hover{
-            fill: black;
+        &#front{
+            fill: rgb(255, 255, 255);
+            stroke: black;
+            transition: .2s;
+            @media (pointer:coarse){
+                r: 10;
+            }
+            @media (hover: hover){
+                &:hover{
+                    fill: black;
+               }   
+            }
+            //pointer-events: none;
+            &.holeinone{
+                fill: green;
+            }
+            &.problematic{
+                fill: yellow;
+            }
+            &.worthyofimprovement{
+                fill: red;
+            }
         }
-    }
-    .holeinone{
-        fill: green;
-    }
-    .problematic{
-        fill: yellow;
-    }
-    .worthyofimprovement{
-        fill: red;
+        &#back{
+            pointer-events: none;
+        }
     }
     text{
         user-select: none;
@@ -99,4 +112,5 @@
             transform: translateX(0%);
         }
     }
+    
 </style>
