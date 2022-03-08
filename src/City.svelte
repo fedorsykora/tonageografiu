@@ -46,7 +46,9 @@
     $cities.push({name, reveal, reset});
 </script>
 
-<circle id="front" r="5" cx={coords[0]} cy={coords[1]} class={(function(){
+<circle id="back" cx={coords[0]} cy={coords[1]} on:click={handleClick} fill="transparent" stroke="transparent"/>
+{#if revealed||tempRevealed} <text x={coords[0]} y={coords[1]}>{name}</text> {/if}
+<circle id="front" cx={coords[0]} cy={coords[1]} class={(function(){
     if(revealed){
         if(misattributions==0) return "holeinone";
         else if(misattributions<=MAX_TRIES) return "problematic";
@@ -54,11 +56,10 @@
     }
     else return "";
 })()} class:shaking={shaking}/>
-{#if revealed||tempRevealed} <text x={coords[0]} y={coords[1]}>{name}</text> {/if}
-<circle id="back" r="20" cx={coords[0]} cy={coords[1]} on:click={handleClick} fill="transparent" stroke="transparent"/>
 
 <style lang="scss">
     circle{
+        r: 5;
         &#front{
             fill: rgb(255, 255, 255);
             stroke: black;
@@ -66,12 +67,7 @@
             @media (pointer:coarse){
                 r: 10;
             }
-            @media (hover: hover){
-                &:hover{
-                    fill: black;
-               }   
-            }
-            //pointer-events: none;
+            pointer-events: none;
             &.holeinone{
                 fill: green;
             }
@@ -83,7 +79,14 @@
             }
         }
         &#back{
-            pointer-events: none;
+            @media (hover: hover){
+                &:hover + #front{
+                    fill: black;
+               }   
+            }
+            @media (pointer:coarse){
+                r: 20;
+            }
         }
     }
     text{
