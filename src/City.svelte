@@ -46,21 +46,21 @@
     $cities.push({name, reveal, reset});
 </script>
 
-<circle id="back" cx={coords[0]} cy={coords[1]} on:click={handleClick} fill="transparent" stroke="transparent"/>
+<circle class="back" cx={coords[0]} cy={coords[1]} on:click={handleClick} fill="transparent" stroke="transparent"/>
 {#if revealed||tempRevealed} <text x={coords[0]} y={coords[1]}>{name}</text> {/if}
-<circle id="front" cx={coords[0]} cy={coords[1]} class={(function(){
+<circle cx={coords[0]} cy={coords[1]} class='front {(function(){
     if(revealed){
         if(misattributions==0) return "holeinone";
         else if(misattributions<=MAX_TRIES) return "problematic";
         else return"worthyofimprovement";
     }
     else return "";
-})()} class:shaking={shaking}/>
+})()}' class:shaking={shaking}/>
 
 <style lang="scss">
     circle{
         r: 5;
-        &#front{
+        &.front{
             fill: rgb(255, 255, 255);
             stroke: black;
             transition: .2s;
@@ -78,9 +78,9 @@
                 fill: red;
             }
         }
-        &#back{
+        &.back{
             @media (hover: hover){
-                &:hover + #front{
+                &:hover + .front{
                     fill: black;
                }   
             }
