@@ -95,5 +95,5 @@
     {#each Object.entries(d).sort((a,b) => Math.random()-0.5) as [name, coords]}
         <City name={name} coords={coords} tempRevealed={allRevealed}/>
     {/each}
+    <text x="744.745" y="735" text-anchor="middle" fill="white">Pôvodná mapa: <a fill="blue" href="https://commons.wikimedia.org/wiki/File:Slovensko_okresy.svg">Liqid1010</a>, CC0, via Wikimedia Commons</text>
 </svg>
-<p>Pôvodná mapa: <a href="https://commons.wikimedia.org/wiki/File:Slovensko_okresy.svg">Liqid1010</a>, CC0, via Wikimedia Commons</p>
