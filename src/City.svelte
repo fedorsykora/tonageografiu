@@ -59,13 +59,13 @@
 
 <style lang="scss">
     circle{
-        r: 5;
+        r: 5px;
         &.front{
             fill: rgb(255, 255, 255);
             stroke: black;
             transition: .2s;
             @media (pointer:coarse){
-                r: 10;
+                r: 10px;
             }
             pointer-events: none;
             &.holeinone{
@@ -85,7 +85,7 @@
                }   
             }
             @media (pointer:coarse){
-                r: 20;
+                r: 20px;
             }
         }
     }
