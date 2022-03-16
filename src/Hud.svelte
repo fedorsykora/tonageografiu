@@ -36,21 +36,19 @@
 </div>
 
 <style lang="scss">
+    div, p{
+        position: fixed;
+        background-color: rgba(51, 51, 51, 0.15);
+    }
     div{
-        position: absolute;
-        top: 0;
-        padding: 2%;
-        &#scores{
-            left: 0;
-            button{
-                margin-top: 5%;
-            }
+        padding: .5%;
+        button{
+            margin-top: 5%;
         }
     }
-    #city{
-        position: absolute;
-        margin: 0 auto;
-        left:0;
-        right:0;
+    p{
+        top: 0;
+        left: 0;
+        transform: translateX(calc(50vw - 50%));
     }
 </style>
