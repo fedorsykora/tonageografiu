@@ -4,7 +4,7 @@
     
     let remaining: number;    
     let timer;
-    let time: string;
+    let time: string = "00:00";
     function createTimer(){
         console.log("create timer");
         timer = setInterval(() => {
