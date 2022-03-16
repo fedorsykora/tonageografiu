@@ -47,7 +47,6 @@
 </script>
 
 <circle class="back" cx={coords[0]} cy={coords[1]} on:click={handleClick} fill="transparent" stroke="transparent"/>
-{#if revealed||tempRevealed} <text x={coords[0]} y={coords[1]}>{name}</text> {/if}
 <circle cx={coords[0]} cy={coords[1]} class='front {(function(){
     if(revealed){
         if(misattributions==0) return "holeinone";
@@ -56,6 +55,7 @@
     }
     else return "";
 })()}' class:shaking={shaking}/>
+{#if revealed||tempRevealed} <text x={coords[0]} y={coords[1]}>{name}</text> {/if}
 
 <style lang="scss">
     circle{
